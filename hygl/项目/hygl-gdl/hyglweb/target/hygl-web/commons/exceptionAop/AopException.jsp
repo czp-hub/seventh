@@ -29,19 +29,19 @@
                 xhr.setRequestHeader('token', token);
             }
         })
-        csJsp();
+        if(token == '' || token == "undefined"){
+            csJsp();
+        }
     })
 
 
 
     function csJsp() {
-        $.ajax({
+        $.post({
             url:"http://localhost:8090/user/jupmJsp",
-            type:"Post",
             dataType:"json",
             async:false,
         });
-
     }
 
 </script>
