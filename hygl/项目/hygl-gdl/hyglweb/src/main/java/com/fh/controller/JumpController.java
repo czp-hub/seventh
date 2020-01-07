@@ -23,4 +23,8 @@ public class JumpController {
         mav.addObject("id",id);
         return mav;
     }
+    @RequestMapping("main")
+    public String toMain(String url){
+        return url;
+    }
 }

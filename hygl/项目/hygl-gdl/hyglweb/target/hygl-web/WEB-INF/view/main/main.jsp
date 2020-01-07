@@ -11,35 +11,77 @@
     <title>Title</title>
 </head>
 <jsp:include page="../../commons/jqCss.jsp"></jsp:include>
-<jsp:include page="../../../commons/exceptionAop/AopException.jsp"></jsp:include>
 <style>
     li{
         list-style: none;
     }
 </style>
 <body>
-    <div class="container">
-        <div class="row" style="height: 84px" >
-            <img src="/commons/img/u5.png">
+<nav class="navbar navbar-default">
+    <div class="container-fluid" style="background-color: #00aaee">
+        <div class="navbar-header">
+            <img alt="Brand" src="/commons/img/hygl_artery4_right_02.jpg" style="width: 130px;height: 84px">
         </div>
+        <div class="navbar-header" style="float: left;padding-left: 30px">
+            <h1><span style="color: #b9def0">北京市人民政府办公厅</span></h1>
+        </div>
+        <div class="navbar-header" style="float: left;padding-left: 30px">
+            <h1><span style="color: #ad6704">会议管理系统</span></h1>
+        </div>
+        <div class="navbar-header" style="float: left;padding-left: 250px;padding-top: 20px">
+            <h4 ><a style="color: #b9def0"><i class="glyphicon glyphicon-home"></i>首页</a></h4>
+        </div>
+        <div class="navbar-header" style="float: left;padding-left: 150px;padding-top: 20px">
+            <h4 ><a style="color: #b9def0"><i class="glyphicon glyphicon-user"></i></a></h4>
+        </div>
+        <div class="navbar-header" style="float: right;padding-top: 20px">
+            <h4><a style="color: #b9def0">退出</a></h4>
+        </div>
+    </div>
+</nav>
+    <div class="container-fluid" >
         <div class="row">
-            <div class="col-md-3" style="height: 600px">
+            <div class="col-xs-3" style="height: 600px">
                 <ul class="list-group" id="systemListPage">
                 </ul>
+                <a onclick="mainClick('/jumpController/main?url=dept/dept',this)">组织分配人员管理</a>
             </div>
-            <div class="col-md-8" style="height: 600px;background: #f7e1b5;">
-                <div id="depa" class="col-md-4"></div>
-                <div id="job" class="col-md-4"></div>
-                <div id="right" class="col-md-4"></div>
+            <div class="col-xs-8" style="height: 600px;">
+                <div class="panel panel-default">
+                    <div class="panel-footer" id="frameMainTitle">
+                        <span><i class="bg-primary"></i>后台首页</span>
+                    </div>
+                    <div class="panel-body">
+                        <footer>
+                            <iframe style="width: 100%;height: 100%" id="mainIframe" src="" scrolling="no" frameborder="no" ></iframe>
+                        </footer>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </body>
 <script type="text/javascript">
-
+    var token = "";
+    if (sessionStorage.getItem("token")) {
+        token = sessionStorage.getItem("token");
+    }
     $(function () {
-        showSystemList();
+        $.ajaxSetup({ //发送请求前触发
+            contentType: "application/x-www-form-urlencoded;charset=utf-8",
+            complete: function (XMLHttpRequest, textStatus) {
+                var nologin = XMLHttpRequest.getResponseHeader("NOLONGIN");
+                if (nologin == "5006") {
+                    window.location.href = "/index.jsp";
+                }
+            },
+            beforeSend: function (xhr) { //可以设置自定义标头
+                xhr.setRequestHeader('token', token);
+            }
+        })
+        showSystemList()
     })
+
     function showSystemList() {
         $.ajax({
             url:"http://localhost:8091/rights/"+0,
@@ -47,6 +89,7 @@
             dataType:"json",
             success:function (result) {
                 if ("200" == result.code){
+                    console.info(result.data)
                     var systemListPage="";
                     var systemList=result.data;
                     for (var i = 0; i < systemList.length; i++) {
@@ -77,7 +120,7 @@
                         if (0 != systemList[i].pid && pId == systemList[i].pid){
                             secondPage+='<ul>\n' +
                                 '                        <a href="#javascript:void(0);">\n' +
-                                '                            <li><span class="glyphicon glyphicon-menu-right">'+systemList[i].rightName+'</span></li>\n' +
+                                '                            <li><span class="glyphicon glyphicon-menu-right"><a>'+systemList[i].rightName+'<a/></span></li>\n' +
                                 '                        </a>\n' +
                                 '                    </ul>';
                         }
@@ -87,6 +130,10 @@
             }
         })
         $("#systemSpan_"+pId).attr("class","glyphicon glyphicon-chevron-down");
+    }
+    function mainClick(url,obj) {
+        $("#frameMainTitle span").html('<i class=""></i>'+$(obj).text());
+        $("#mainIframe").attr("src",url);
     }
 </script>
 </html>

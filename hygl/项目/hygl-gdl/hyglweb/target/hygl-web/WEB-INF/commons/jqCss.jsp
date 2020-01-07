@@ -16,3 +16,4 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/commons/ztree/js/jquery.ztree.all.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/commons/bootstarpValidator/js/bootstrapValidator.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/commons/bootstarpValidator/js/language/zh_CN.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/commons/deptZtree.js"></script>
