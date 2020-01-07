@@ -2,6 +2,7 @@ package com.fh.service.Impl;
 
 import com.fh.bean.UserBean;
 import com.fh.dao.UserDao;
+import com.fh.param.UserSearchParam;
 import com.fh.service.UserService;
 import com.fh.utiles.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,13 @@ public class UserServiceImpl implements UserService {
         return userDao.queryUserName(userName);
     }
 
-    public PageBean<UserBean> queryUser(UserBean userBean) {
+    public PageBean<UserBean> queryUser(UserSearchParam userSearchParam) {
         Integer count = userDao.queryCount();
-        userBean.setRecodsFilterd(count);
-        userBean.setRecodsFilterd(count);
-        List<UserBean> list = userDao.queryUser(userBean);
-        userBean.setData(list);
-        return userBean;
+        userSearchParam.setRecodsFilterd(count);
+        userSearchParam.setRecodsFilterd(count);
+        List<UserBean> list = userDao.queryUser(userSearchParam);
+        userSearchParam.setData(list);
+        return userSearchParam;
     }
 
     public void deleteUser(Integer id) {

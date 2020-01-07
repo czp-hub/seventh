@@ -10,7 +10,7 @@
         select count(id) from t_user
     </select>
 
-    <select id="queryUser" resultType="com.fh.bean.UserBean" >
+    <select id="queryUser" resultType="com.fh.param.UserSearchParam" >
         select * from t_user
         limit #{start}, #{length}
     </select>
