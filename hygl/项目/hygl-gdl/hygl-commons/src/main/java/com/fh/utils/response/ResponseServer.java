@@ -9,6 +9,7 @@ package com.fh.utils.response;
  */
 public class ResponseServer {
 
+    public static final String SESSION_TIMEOUT = "ssssss";
     private Integer code;
 
     private String message;

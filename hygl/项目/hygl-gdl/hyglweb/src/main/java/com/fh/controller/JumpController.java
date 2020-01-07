@@ -18,7 +18,7 @@ public class JumpController {
 
     @RequestMapping("togoUser")
     /*@LoginAnnotation*/
-    public ModelAndView togoUser(Integer id){
+    public ModelAndView togoUser(String id){
         ModelAndView mav=new ModelAndView("User/updateUser");
         mav.addObject("id",id);
         return mav;

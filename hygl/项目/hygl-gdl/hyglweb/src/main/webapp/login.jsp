@@ -15,6 +15,7 @@
     <link href="<%=request.getContextPath()%>/commons/live2d/assets/waifu.css" rel="stylesheet"/>
     <script type="text/javascript" src="<%=request.getContextPath()%>/commons/live2d/assets/waifu-tips.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/commons/live2d/assets/live2d.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/commons/MD5/md5.js"></script>
 </head>
 
 
@@ -28,13 +29,13 @@
             type:"POST",
             data:{
                 userName:userName,
-                password:userPassword
+                password:hex_md5(userPassword)
             },
             success: function (result) {
                 if(result.code==200){
                     var token = result.data;
                     sessionStorage.setItem("token",token);
-                    location.href="<%=request.getContextPath()%>/jumpController/jumpPage?url=main/main";
+                    location.href="<%=request.getContextPath()%>/jumpController/jumpPage?url=User/queryUser";
                 }
                 alert(result.message)
             },
@@ -72,6 +73,7 @@
 <script src="<%=request.getContextPath()%>/commons/live2d/assets/live2d.js"></script>
 <script src="<%=request.getContextPath()%>/commons/live2d/assets/waifu-tips.js"></script>
 <script type="text/javascript">initModel()</script>
+
 
 
 <div class="container">

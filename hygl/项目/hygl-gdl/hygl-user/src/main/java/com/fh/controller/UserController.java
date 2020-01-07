@@ -3,7 +3,7 @@ package com.fh.controller;
 import com.fh.Interceptor.LoginAnnotation;
 import com.fh.bean.UserBean;
 import com.fh.service.UserService;
-import com.fh.utiles.PageBean;
+import com.fh.utils.PageBean;
 import com.fh.utils.response.ResponseServer;
 import com.fh.utils.response.ServerEnum;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +21,14 @@ public class UserController {
 
     @GetMapping("/queryUser")
     @LoginAnnotation
-    public PageBean<UserBean> queryUser(PageBean pageBean){
-        return userService.queryUser(pageBean);
+    public PageBean<UserBean> queryUser(PageBean<UserBean> page, UserBean userBean){
+        return userService.queryUser(page,userBean);
     }
 
     @PutMapping("/toAddUser")
    @LoginAnnotation
-    public ResponseServer toAddUser(UserBean userBean, Integer id){
-        if(id != null){
+    public ResponseServer toAddUser(UserBean userBean, String id){
+        if(id != null && id != ""){
             userService.updateUser(userBean);
             return ResponseServer.success(ServerEnum.ADD_SUCCESS);
         }
@@ -40,14 +40,14 @@ public class UserController {
 
     @DeleteMapping
    @LoginAnnotation
-    public ResponseServer deleteUser(Integer id){
+    public ResponseServer deleteUser(String id){
         userService.deleteUser(id);
         return ResponseServer.success(ServerEnum.DELETE_SUCCESS);
     }
 
     @PostMapping
    @LoginAnnotation
-    public ResponseServer togoUser(Integer id){
+    public ResponseServer togoUser(String id){
         UserBean userBean = userService.togoUser(id);
         return ResponseServer.success(userBean);
     }

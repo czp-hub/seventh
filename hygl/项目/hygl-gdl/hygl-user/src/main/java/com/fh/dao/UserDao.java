@@ -2,8 +2,9 @@ package com.fh.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.fh.bean.UserBean;
-import com.fh.utiles.PageBean;
+import com.fh.utils.PageBean;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,15 +15,9 @@ public interface UserDao extends BaseMapper<UserBean> {
 
     public UserBean queryUserName(String userName);
 
-    public  void deleteUser(Integer id);
+    public  Long queryCount();
 
-    public  void addUser(UserBean userBean);
-
-    public  Integer queryCount();
-
-    public UserBean togoUser(Integer id);
-
-    public List<UserBean> queryUser(PageBean pageBean);
+    public List<UserBean> queryUser(@Param("page") PageBean<UserBean> page, @Param("userBean") UserBean userBean);
 
     public void updateUser(UserBean userBean);
 
