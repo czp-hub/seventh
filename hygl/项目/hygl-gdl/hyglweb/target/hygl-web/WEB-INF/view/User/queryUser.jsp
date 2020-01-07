@@ -22,11 +22,10 @@
 <div class="container">
     <div class="panel panel-danger">
         <!-- Default panel contents -->
-        <div class="panel-heading"> <center>品牌列表</center></div>
+        <div class="panel-heading"> <center><h2>会员列表</h2></center></div>
         <div class="panel-heading">
             <center>
                 <input type="button" value="新增" onclick="addUser()" class="btn btn-info "/>
-                <a href="<%=request.getContextPath()%>/queryJsp?url=User/lookGo">版娘</a>
             </center>
         </div>
         <div class="bg-success">
@@ -41,9 +40,10 @@
     //展示
     var userTable = $("#userTable").DataTable({
         "autoWidth":true, //自适应宽度
+        "bFilter": false,
         "info":true,//展示表格左下角信息,分页栏
-        "lengthChange":true,//是否改变每页展示的条数
-        "lengthMenu": [ 2, 5, 10 ],
+        "lengthChange":false,//是否改变每页展示的条数
+        "lengthMenu": [10],
         "ordering": false,//是否允许排序
         "paging": true,//是否允许开启本地分页
         "processing": true,//是否先处理状态
@@ -59,7 +59,7 @@
         //数据如何展示到表格中
         "columns":[
             {"data":"id","title":"<input type=\"checkbox\" value=\"\" name=\"\" onclick='qx(this)'>",render:function(data, type, row, meta){
-                    return '<input type="checkbox"  name="boxId" value="' + data +'">';
+                    return '<input type="checkbox"  name="boxId" value="\'' + data +'\'">';
 
                 }},
 
@@ -76,8 +76,8 @@
                 }},
 
             {data:"id","title":"操作",render:function (data, type, row, meta) {
-                    return '<input type="button" value="修改" onclick=" updateUser('+ data +')" class="btn btn-info " />'
-                        +'<input type="button" value="删除" onclick=" deleteUser('+ data +')" class="btn btn-info " />';
+                    return '<input type="button" value="修改" onclick=" updateUser(\''+ data +'\')" class="btn btn-info " />'
+                        +'<input type="button" value="删除" onclick=" deleteUser(\''+ data +'\')" class="btn btn-info " />';
                 }}
         ],
         "language":{
@@ -93,7 +93,7 @@
             url:"<%=request.getContextPath()%>/jumpController/jumpPage",
             type:"post",
             data:{
-              url:"User/addUser"
+                url:"User/addUser"
             },
             dataType:"html",
             async:false,
@@ -172,6 +172,7 @@
 
     //修改
     function updateUser(id) {
+        alert(id)
         var togoHTML="wwww";
         $.ajax({
             url:"<%=request.getContextPath()%>/jumpController/togoUser",

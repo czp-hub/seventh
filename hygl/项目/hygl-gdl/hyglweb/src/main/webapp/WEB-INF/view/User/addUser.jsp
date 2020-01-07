@@ -17,7 +17,6 @@
 <body>
 	<br>
 	<form  method="post" id="addUserForm">
-		<input type="hidden" value="${user.id}" name="id"></br>
 		<div class="">
 			<center>
 			账号:<input type="text" value="${user.userName}" name="userName"></br>

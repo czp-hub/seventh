@@ -11,8 +11,8 @@ import java.util.Date;
 @TableName(value = "t_user")
 public class UserBean {
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id", type = IdType.UUID)
+    private String id;
 
     @TableField(value = "userName")
     private String userName;
@@ -27,6 +27,9 @@ public class UserBean {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Integer errorCount = 0;
 
+    @TableField(value = "loginCount")
+    private Integer loginCount;
+
     @TableField(value = "errorTime")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date errorTime;
@@ -35,11 +38,11 @@ public class UserBean {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date loginTime;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -73,6 +76,14 @@ public class UserBean {
 
     public void setErrorCount(Integer errorCount) {
         this.errorCount = errorCount;
+    }
+
+    public Integer getLoginCount() {
+        return loginCount;
+    }
+
+    public void setLoginCount(Integer loginCount) {
+        this.loginCount = loginCount;
     }
 
     public Date getErrorTime() {
