@@ -7,18 +7,16 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
-@TableName("t_pro")
+@TableName("t_right")
 public class RightPo {
 
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
-    @TableField("name")
+    @TableField("rightName")
     private String rightName;
     @TableField("pId")
-    private Integer pId;
-    @TableField("isShow")
-    private Integer isShow;
-    @TableField("relevanceRight")
-    private Integer relevanceRight;
+    private String pId;
+    @TableField("rightUrl")
+    private String rightUrl;
 
 }

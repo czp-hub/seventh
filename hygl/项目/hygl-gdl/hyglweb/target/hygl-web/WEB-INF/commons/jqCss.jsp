@@ -7,7 +7,6 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 <script type="text/javascript" src="${pageContext.request.contextPath}/commons/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/commons/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/commons/datatable/DataTables-1.10.18/js/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/commons/datatable/DataTables-1.10.18/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/commons/dateFormat.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/commons/bootbox/bootbox.min.js"></script>

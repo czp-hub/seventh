@@ -34,7 +34,7 @@
                 if(result.code==200){
                     var token = result.data;
                     sessionStorage.setItem("token",token);
-                    location.href="<%=request.getContextPath()%>/jumpController/jumpPage?url=User/queryUser";
+                    location.href="<%=request.getContextPath()%>/jumpController/jumpPage?url=main/main";
                 }
                 alert(result.message)
             },

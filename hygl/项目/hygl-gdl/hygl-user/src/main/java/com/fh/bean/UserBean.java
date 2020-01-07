@@ -27,9 +27,6 @@ public class UserBean {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Integer errorCount = 0;
 
-    @TableField(value = "loginCount")
-    private Integer loginCount;
-
     @TableField(value = "errorTime")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date errorTime;
@@ -76,14 +73,6 @@ public class UserBean {
 
     public void setErrorCount(Integer errorCount) {
         this.errorCount = errorCount;
-    }
-
-    public Integer getLoginCount() {
-        return loginCount;
-    }
-
-    public void setLoginCount(Integer loginCount) {
-        this.loginCount = loginCount;
     }
 
     public Date getErrorTime() {

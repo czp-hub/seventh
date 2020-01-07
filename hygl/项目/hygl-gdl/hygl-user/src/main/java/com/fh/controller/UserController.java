@@ -2,7 +2,6 @@ package com.fh.controller;
 
 import com.fh.Interceptor.LoginAnnotation;
 import com.fh.bean.UserBean;
-import com.fh.param.UserSearchParam;
 import com.fh.service.UserService;
 import com.fh.utiles.PageBean;
 import com.fh.utils.response.ResponseServer;
@@ -22,8 +21,8 @@ public class UserController {
 
     @GetMapping("/queryUser")
     @LoginAnnotation
-    public PageBean<UserBean> queryUser(UserSearchParam userSearchParam){
-        return userService.queryUser(userSearchParam);
+    public PageBean<UserBean> queryUser(PageBean pageBean){
+        return userService.queryUser(pageBean);
     }
 
     @PutMapping("/toAddUser")

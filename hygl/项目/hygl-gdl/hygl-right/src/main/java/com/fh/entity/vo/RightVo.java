@@ -10,6 +10,6 @@ public class RightVo implements Serializable {
     private Integer id;
     private String rightName;
     private Integer pId;
-    private Integer relevanceRight;
+    private String rightUrl;
 
 }

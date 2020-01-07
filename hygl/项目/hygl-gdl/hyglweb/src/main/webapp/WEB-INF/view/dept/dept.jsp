@@ -10,8 +10,8 @@
 <head>
     <title></title>
 </head>
-<body>
 <jsp:include page="../../commons/jqCss.jsp"></jsp:include>
+<body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-4">
@@ -119,7 +119,7 @@
         addDpetDiv=$("#addDeptDiv").html();
         $("#addDeptDiv").html("")
     })
-   /* function initDeptZtree() {
+    function initDeptZtree() {
         $.ajax({
             url:"http://localhost:8093/dept",
             type:"get",
@@ -140,9 +140,8 @@
                     };
                     $.fn.zTree.init($("#deptTree"), setting, result);
                 }
-
         })
-    }*/
+    }
     function categroyClick(event, treeId, treeNode) {
         console.info(treeNode)
         if(treeNode.classId==3){
@@ -314,7 +313,6 @@
         }
     }
     function deleteDept() {
-        alert(1111111)
         var treeObj = $.fn.zTree.getZTreeObj("deptTree");
         var nodes = treeObj.getSelectedNodes();
         if(nodes.length>0){

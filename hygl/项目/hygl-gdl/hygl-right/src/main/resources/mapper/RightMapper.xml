@@ -6,9 +6,8 @@
 
     <!-- 初始化权限菜单 -->
     <select id="showSystemList" resultType="com.fh.entity.vo.RightVo">
-        SELECT TP.ID,TP.NAME RIGHTNAME,TP.PID,TP.RELEVANCERIGHT
-        FROM T_PRO TP
-        WHERE TP.ISSHOW=2
+        SELECT TR.ID,TR.RIGHTNAME,TR.PID,TR.RIGHTURL
+        FROM T_RIGHT TR
     </select>
 
 

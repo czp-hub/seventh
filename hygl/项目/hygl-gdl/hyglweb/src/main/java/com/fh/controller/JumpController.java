@@ -12,7 +12,7 @@ public class JumpController {
     //跳页面的方法
     @RequestMapping("jumpPage")
     /*@LoginAnnotation*/
-    public String jumpDept(String url) {
+    public String jumpPage(String url) {
         return url;
     }
 

@@ -44,7 +44,6 @@
             <div class="col-xs-3" style="height: 600px">
                 <ul class="list-group" id="systemListPage">
                 </ul>
-                <a onclick="mainClick('/jumpController/main?url=dept/dept',this)">组织分配人员管理</a>
             </div>
             <div class="col-xs-8" style="height: 600px;">
                 <div class="panel panel-default">
@@ -61,24 +60,9 @@
         </div>
     </div>
 </body>
+<jsp:include page="../../../commons/exceptionAop/AopException.jsp"></jsp:include>
 <script type="text/javascript">
-    var token = "";
-    if (sessionStorage.getItem("token")) {
-        token = sessionStorage.getItem("token");
-    }
     $(function () {
-        $.ajaxSetup({ //发送请求前触发
-            contentType: "application/x-www-form-urlencoded;charset=utf-8",
-            complete: function (XMLHttpRequest, textStatus) {
-                var nologin = XMLHttpRequest.getResponseHeader("NOLONGIN");
-                if (nologin == "5006") {
-                    window.location.href = "/index.jsp";
-                }
-            },
-            beforeSend: function (xhr) { //可以设置自定义标头
-                xhr.setRequestHeader('token', token);
-            }
-        })
         showSystemList()
     })
 
@@ -119,8 +103,8 @@
                     for (var i = 0; i < systemList.length; i++) {
                         if (0 != systemList[i].pid && pId == systemList[i].pid){
                             secondPage+='<ul>\n' +
-                                '                        <a href="#javascript:void(0);">\n' +
-                                '                            <li><span class="glyphicon glyphicon-menu-right"><a>'+systemList[i].rightName+'<a/></span></li>\n' +
+                                '                        <a href="#javascript:void(0);" onclick="mainClick(\''+systemList[i].rightUrl+'\',this)">\n' +
+                                '                            <li><span class="glyphicon glyphicon-menu-right">'+systemList[i].rightName+'</span></li>\n' +
                                 '                        </a>\n' +
                                 '                    </ul>';
                         }
@@ -133,7 +117,7 @@
     }
     function mainClick(url,obj) {
         $("#frameMainTitle span").html('<i class=""></i>'+$(obj).text());
-        $("#mainIframe").attr("src",url);
+        $("#mainIframe").attr("src","/jumpController/jumpPage?url="+url);
     }
 </script>
 </html>
