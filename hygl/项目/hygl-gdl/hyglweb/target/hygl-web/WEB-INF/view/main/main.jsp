@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <jsp:include page="../../commons/jqCss.jsp"></jsp:include>
+<jsp:include page="../../../commons/exceptionAop/AopException.jsp"></jsp:include>
 <style>
     li{
         list-style: none;
@@ -60,7 +61,6 @@
         </div>
     </div>
 </body>
-<jsp:include page="../../../commons/exceptionAop/AopException.jsp"></jsp:include>
 <script type="text/javascript">
     $(function () {
         showSystemList()

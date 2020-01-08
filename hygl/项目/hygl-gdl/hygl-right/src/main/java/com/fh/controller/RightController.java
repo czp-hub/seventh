@@ -1,5 +1,6 @@
 package com.fh.controller;
 
+import com.fh.Interceptor.LoginAnnotation;
 import com.fh.service.RightService;
 import com.fh.utils.response.ResponseServer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class RightController {
      * @return
      */
     @GetMapping("/{pId}")
+    @LoginAnnotation
     public ResponseServer showSystemList(@PathVariable Integer pId){
         return rightService.showSystemList(pId);
     }
