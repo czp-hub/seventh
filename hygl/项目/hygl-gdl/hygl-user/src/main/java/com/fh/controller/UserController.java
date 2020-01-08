@@ -21,7 +21,7 @@ public class UserController {
 
     @GetMapping("/queryUser")
     @LoginAnnotation
-    public PageBean<UserBean> queryUser(PageBean<UserBean> page,UserBean userBean){
+    public PageBean<UserBean> queryUser(PageBean<UserBean> page, UserBean userBean){
         return userService.queryUser(page,userBean);
     }
 

@@ -2,6 +2,7 @@ package com.fh.loginController;
 
 import com.fh.bean.UserBean;
 import com.fh.jwt.JwtUtils;
+import com.fh.logsController.Logs;
 import com.fh.service.UserService;
 import com.fh.utils.response.ResponseServer;
 import com.fh.utils.response.ServerEnum;
@@ -11,7 +12,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +25,7 @@ public class logController {
     private UserService userService;
 
     @PostMapping("/queryLong")
+    @Logs("登录方法")
     public ResponseServer queryLong(@RequestParam String userName, @RequestParam String password){
 
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -67,9 +68,6 @@ public class logController {
         user.setLoginTime(new Date());
         userService.updateUser(user);
         request.setAttribute("user",user);
-        UserBean user1 = (UserBean) request.getAttribute("user");
-        HttpSession session = request.getSession();
-        session.setAttribute("longin",user);
         Map<String,Object> map = new HashMap<>();
         map.put("userName",user.getUserName());
 

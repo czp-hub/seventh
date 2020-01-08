@@ -16,7 +16,7 @@
     </select>
 
     <update id="updateUser" parameterType="com.fh.bean.UserBean">
-        update t_user set userName=#{userName},password=#{password},phone=#{phone},errorCount=#{errorCount},errorTime=#{errorTime},loginTime=#{loginTime}
+        update t_user set userName=#{userName},password=#{password},phone=#{phone},errorCount=#{errorCount},loginCount=#{loginCount},errorTime=#{errorTime},loginTime=#{loginTime}
         where id=#{id}
     </update>
 

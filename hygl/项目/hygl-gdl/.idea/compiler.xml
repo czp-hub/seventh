@@ -9,6 +9,7 @@
         <module name="hygl-commons" />
         <module name="hygl-dape" />
         <module name="hygl-job" />
+        <module name="hygl-logs" />
         <module name="hygl-right" />
         <module name="hygl-user" />
         <module name="hyglweb" />
@@ -19,6 +20,7 @@
       <module name="hygl-commons" target="1.8" />
       <module name="hygl-dape" target="1.8" />
       <module name="hygl-job" target="1.8" />
+      <module name="hygl-logs" target="1.8" />
       <module name="hygl-right" target="1.8" />
       <module name="hygl-user" target="1.8" />
       <module name="hyglweb" target="1.8" />

@@ -23,6 +23,7 @@
     function  longIn() {
         var userName= $("#userName").val();
         var userPassword=  $("#userPassword").val();
+
         $.ajax({
             url: "http://localhost:8090/login/queryLong",
             dataType: "json",
@@ -32,10 +33,11 @@
                 password:userPassword
             },
             success: function (result) {
+                alert(result);
                 if(result.code==200){
                     var token = result.data;
                     sessionStorage.setItem("token",token);
-                    location.href="<%=request.getContextPath()%>/jumpController/jumpPage?url=main/main";
+                    location.href="<%=request.getContextPath()%>/jumpController/jumpPage?url=User/queryUser";
                 }
                 alert(result.message)
             },
@@ -89,7 +91,7 @@
             <div class="">
                 <span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>			</div>
             <div>
-                <input type="submit" value="登录" onclick="longIn()"  class="btn btn-primary" id="js-btn-login"/>
+                <input type="button" value="登录" onclick="longIn()"  class="btn btn-primary" id="js-btn-login"/>
                 <a href="#">忘记密码?</a>
             </div>
         </form>

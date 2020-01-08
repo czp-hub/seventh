@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Aspect
 @Component
-@Order(7)
+@Order(1)
 public class LoginAnnotationAop {
 
     @Around(value = "execution(* com.fh.controller.*.*(..))&&@annotation(loginAnnotation)")

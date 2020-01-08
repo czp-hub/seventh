@@ -89,7 +89,7 @@
             <div class="">
                 <span class="help-block u-errormessage" id="js-server-helpinfo">&nbsp;</span>			</div>
             <div>
-                <input type="submit" value="登录" onclick="longIn()"  class="btn btn-primary" id="js-btn-login"/>
+                <input type="button" value="登录" onclick="longIn()"  class="btn btn-primary" id="js-btn-login"/>
                     <a href="#">忘记密码?</a>
             </div>
         </form>
